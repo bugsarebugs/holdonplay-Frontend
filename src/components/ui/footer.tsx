@@ -1,8 +1,11 @@
+"use client";
 import Link from "next/link";
+import { useTheme } from "./ThemeProvider";
 
 export default function Footer(){
+    const [theme] = useTheme();
     return (
-        <div className="flex flex-col p-10 justify-center text-center shadow-2xl shadow-blue-400 bg-black sm:text-center ">
+        <div className={`flex flex-col p-10 justify-center text-center shadow-2xl shadow-blue-400 bg-black sm:text-center ${theme === "dark" ? "bg-black text-white" : "bg-white text-black"}`}>
         <div className="flex flex-col sm:flex-col md:flex-col  lg:flex-row justify-center  text-center lg:text-left md:text-center">
             <div className="p-2 m-2">
                 <h1 className="text-2xl font-bold">Learn About HoldOnPlay</h1>
@@ -34,7 +37,7 @@ export default function Footer(){
                 <ul>
                     <li className="hover:text-blue-500"><Link href="/login">Login</Link></li>
                     <li className="hover:text-blue-500"><Link href="/contact">Contact</Link></li>
-                    <li className="hover:text-blue-500"><Link href="/help">Help</Link>p</li>
+                    <li className="hover:text-blue-500"><Link href="/help">Help</Link></li>
                 </ul>
             </div>            
         </div>

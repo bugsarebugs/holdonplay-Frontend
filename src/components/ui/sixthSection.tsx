@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import  { FaGreaterThan, FaLessThan} from "react-icons/fa"
+import { useTheme } from "./ThemeProvider";
 const artistsay = [
     {
         "name": "ClonOnly",
@@ -37,11 +38,12 @@ const artistsay = [
     {
         "name": "bugsarebugs",
         "image": "/forhome/very.jpg",
-        "words": "Wanangu , HoldOn Play ni moto. Ni Kampuni ambayo unaweza kujisamamia wewe na mziki wako na mapato kupata yote kamili",
+        "words": "What If life was all just about Music and Exploration. HoldOnPlay has made it easy for you to get the pay without daily hustle",
     },
 ]
 export default function SixthSection(){
     const [currentIndex, setcurrentIndex] = useState(0);
+    const [theme] = useTheme();
 
     const prevSlide = () => {
         setcurrentIndex((prev) => (prev === 0 ? artistsay.length-1 : prev - 1));
@@ -50,15 +52,15 @@ export default function SixthSection(){
         setcurrentIndex((prev) => (prev === artistsay.length-1  ? 0 : prev + 1));
     };
     return(
-    <div className="flex flex-col p-10 justify-center relative items-center text-center overflow-scroll bg-black ">
-        <h1 className="text-5xl font-bold">What are <span className="text-blue-400">Artists </span>Saying About HoldOnPlay?</h1>
+    <div className={`flex flex-col p-10 justify-center relative items-center text-center overflow-scroll ${theme === "dark" ? "bg-black text-white": "bg-white text-black"}`}>
+        <h1 className="lg:text-5xl sm:text-2xl font-bold">What are <span className="text-blue-400">Artists </span>Saying About HoldOnPlay?</h1>
         <div className="flex relative">
             <div className="flex flex-row overflow-scroll transition-transform duration-300 ease-linear hide-scroll">
             {artistsay.map((src) => (
                 <div className="p-5 text-xl flex-2/5 min-w-svw items-center self-center justify-center flex flex-col transition-transform duration-300 " key={src.name}  style={{ transform: `translateX(-${currentIndex * 100}%)`}}>
                     <div className="flex-shrink-0"><Image src={src.image} width={200} height={100} alt="username" className="rounded-full "/></div>
                     <h1 className="text-white font-bold">{src.name}</h1>
-                    <p className="flex text-wrap max-w-100 text-justify">{src.words }</p>
+                    <p className="flex text-wrap lg:text-lg max-w-100 text-justify text-sm">{src.words }</p>
                 </div>
             ))}
             </div>

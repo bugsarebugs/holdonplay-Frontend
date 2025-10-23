@@ -19,9 +19,10 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "next-globe-gen/schema" : ["./next-globe-gen/schema.ts"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/ui/Navigate.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/ui/Navigate.js", "src/components/ui/hopAssistant.js", "src/app/api/users/route.js", "src/components/ui/ThemeProvider.js"],
   "exclude": ["node_modules"]
 }

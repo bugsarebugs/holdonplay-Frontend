@@ -1,6 +1,7 @@
-
+"use client";
 import Link from "next/link";
 import Image from "next/image";
+import { useTheme } from "@/components/ui/ThemeProvider";
 
 const companyz = [
     {
@@ -238,8 +239,9 @@ const companyz = [
     
 ]
 export default function Stores(){
+    const [theme] = useTheme();
     return (
-        <div className="flex flex-col items-center justify-center p-5">
+        <div className={`flex flex-col items-center justify-center p-5 ${theme === "dark" ? "bg-black text-white" : "bg-white text-black"}`}>
             <h1 className="text-7xl font-extrabold text-center ">Digital <span className="text-blue-400">Music Distribution </span>Stores</h1>
             <p className="lg:px-100 px-5 sm:px-5 sm:text-justify text-justify md:px-20 lg:text-center text-xl">HoldOnPlay Music Distribution puts your music in the most popular digital stores around the world like Spotify, Apple Music, iTunes, Amazon Music, and more. In Face, We partner with over 150 digital stores. Below are just some of out top store partners.</p>
             <button className="hidden"><Link href="/sellMusic">SELL YOUR MUSIC ONLINE</Link></button>

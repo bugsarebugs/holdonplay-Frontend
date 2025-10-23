@@ -1,3 +1,6 @@
+"use client";
+
+import { useTheme } from "@/components/ui/ThemeProvider";
 import Link from "next/link";
 import { FaCheck} from "react-icons/fa"
 import { RxCross1} from "react-icons/rx"
@@ -141,8 +144,9 @@ const tableData = [
 ]
 
 export default function Section1(){
+    const [theme] = useTheme();
     return (
-        <div className="flex flex-col p-10 justify-center items-center text-center">
+        <div className={`flex flex-col relative p-10  justify-center items-center text-center ${theme === "dark" ? "bg-black text-white" : "bg-white text-black"}`}>
             <h1 className="text-6xl max-w-300 font-extrabold">Choose the Right Plan  for Your <span className="text-blue-400">Music Distribution</span></h1>
             <div className="relative  rounded-full border-2 w-max mt-5">
                 <button className=" bg-blue-400 focus:bg-blue-400  mr-2 p-2  rounded-full z:2 ">UNLIMITED PLANS</button>
@@ -182,13 +186,13 @@ export default function Section1(){
                     <div className="absolute top-[-20]  p-2 left-15 z-1 rounded-full bg-blue-400"><h1>BEST DEAL!</h1></div>
                 </div>
             </div>
-            <table className="text-center items-center self-center justify-center flex flex-col  mt-10 align-middle">
-                <thead className="text-center align-middle ">
+            <table className="text-center  items-center self-center justify-center flex flex-col  mt-10 align-middle">
+                <thead className="text-center align-middle  ">
                     <tr className="p-2 ">
-                        <th className="xl:w-100 w-50"></th>
+                        <th className="xl:w-100  w-30"></th>
                         {prices.map((src, i) => (
-                            <th className={`w-auto xl:w-60   ${src.color} ${i===0 ? 'rounded-tl-2xl': ''} ${i===prices.length-1 ? 'rounded-tr-2xl': ''}`} key={src.stage}>
-                                <div className="items-center flex flex-col justify-center p-5">
+                            <th className={` xl:w-54 ${src.color} ${i===0 ? 'rounded-tl-2xl': ''} ${i===prices.length-1 ? 'rounded-tr-2xl': ''}`} key={src.stage}>
+                                <div className="items-center flex flex-col justify-center p-2 lg:p-5">
                                     <h1 className="sm:hidden hidden md:hidden xl:block">{src.stage}</h1>
                                     <h1>{src.price}</h1>
                                     <p className="hidden sm:hidden md:hidden xl:block">{src.words}</p>
@@ -199,15 +203,15 @@ export default function Section1(){
                     </tr>
 
                 </thead>
-                <tbody className="text-center">
+                <tbody className="text-center px-10">
                     {tableData.map((src, ii) => (
                         <tr className="" key={src.name} >
-                            <td className={`p-3 xl:w-100 w-auto flex justify-between align-middle `}>{src.name}</td>
-                            <td className={`xl:*:w-50 p-5  ${ii === tableData.length - 1 ? "border-0" : "border-b-2" }  border-gray-500 bg-gray-800 ${ii===tableData.length-1 ? 'rounded-bl-2xl': ''}`}>{src.datasingle === 'yellow' ?<FaCheck className="text-yellow-500"/> : src.datasingle}{src.datasingle === "" ? <RxCross1 className="text-red-500"/> : ""}</td>
-                            <td className={`xl:*:w-50 p-5  ${ii === tableData.length - 1 ? "border-0" : "border-b-2" }  bg-green-900 border-gray-400`} >{src.dataep === 'red' ?<FaCheck className="text-red-500"/> : src.dataep}{src.dataep === "" ? <RxCross1 className="text-red-500"/> : ""}</td>
-                            <td className={`xl:*:w-50 p-5 ${ii === tableData.length - 1 ? "border-0" : "border-b-2" }  bg-red-900 border-gray-400 `} >{src.dataalb === 'blue' ?<FaCheck className="text-blue-500"/> : src.dataalb}{src.dataalb === "" ? <RxCross1 className="text-red-500"/> : ""}</td>
-                            <td className={`xl:*:w-50 p-5 ${ii === tableData.length - 1 ? "border-0" : "border-b-2" }  bg-yellow-900 border-gray-400 `} >{src.datalp === 'green' ?<FaCheck className="text-green-500"/> : src.datalp}{src.datalp === "" ? <RxCross1 className="text-red-500"/> : ""}</td>
-                            <td className={`xl:*:w-50 p-5 ${ii === tableData.length - 1 ? "border-0" : "border-b-2" }  bg-blue-900 border-gray-400 ${ii===tableData.length-1 ? 'rounded-br-2xl': ''}`} >{src.datapro === 'black' ?<FaCheck className="text-black"/> : src.datapro}{src.datapro === "" ? <RxCross1 className="text-red-500"/> : ""}</td>
+                            <td className={`p-2 xl:w-100 w-auto flex justify-between align-middle `}>{src.name}</td>
+                            <td className={`xl:*:w-50 p-2 sm:p-2  ${ii === tableData.length - 1 ? "border-0" : "border-b-2" }  border-gray-500 bg-gray-800 ${ii===tableData.length-1 ? 'rounded-bl-2xl': ''}`}>{src.datasingle === 'yellow' ?<FaCheck className="text-yellow-500"/> : src.datasingle}{src.datasingle === "" ? <RxCross1 className="text-red-500"/> : ""}</td>
+                            <td className={`xl:*:w-50 p-2  ${ii === tableData.length - 1 ? "border-0" : "border-b-2" }  bg-green-900 border-gray-400`} >{src.dataep === 'red' ?<FaCheck className="text-red-500"/> : src.dataep}{src.dataep === "" ? <RxCross1 className="text-red-500"/> : ""}</td>
+                            <td className={`xl:*:w-50 p-2 ${ii === tableData.length - 1 ? "border-0" : "border-b-2" }  bg-red-900 border-gray-400 `} >{src.dataalb === 'blue' ?<FaCheck className="text-blue-500"/> : src.dataalb}{src.dataalb === "" ? <RxCross1 className="text-red-500"/> : ""}</td>
+                            <td className={`xl:*:w-50 p-2 ${ii === tableData.length - 1 ? "border-0" : "border-b-2" }  bg-yellow-900 border-gray-400 `} >{src.datalp === 'green' ?<FaCheck className="text-green-500"/> : src.datalp}{src.datalp === "" ? <RxCross1 className="text-red-500"/> : ""}</td>
+                            <td className={`xl:*:w-50 p-2 ${ii === tableData.length - 1 ? "border-0" : "border-b-2" }  bg-blue-900 border-gray-400 ${ii===tableData.length-1 ? 'rounded-br-2xl': ''}`} >{src.datapro === 'black' ?<FaCheck className="text-black"/> : src.datapro}{src.datapro === "" ? <RxCross1 className="text-red-500"/> : ""}</td>
                         </tr>
                     ))}
                     
