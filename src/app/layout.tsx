@@ -9,7 +9,7 @@ import News from "@/components/ui/news";
 import Chatbot from "@/components/ui/hopAssistant";
 import ThemeProvider from "@/components/ui/ThemeProvider";
 import { useTheme } from "@/components/ui/ThemeProvider";
-
+import Head from "next/head";
 
 //export const metadata: Metadata = {
 //  title: "HoldONPlay | A Music Distribution Company",
@@ -28,7 +28,41 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const [theme] = useTheme();
+  const HoldOnPlayData = {
+    "@context": "https://schema.org",
+    "@type": "Music",
+    "name": "Hold On Play | Music Distribution Company",
+    "url": "https://www.holdonplay.com",
+    "logo": "https://www.holdonplay.com/logo.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "P.O. Box 2505",
+      "addressLocality": "Dodoma",
+      "addressRegion": "Dodoma Region",
+      "postalCode": "41117",
+      "addressCountry": "TZ"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+255 762 638 232",
+      "contactType": "Customer Service",
+      "areaServed": "TZ",
+      "availableLanguage": "English"
+    },
+    "sameAs": [
+      "https://www.facebook.com/holdonplay",
+      "https://twitter.com/holdonplay",
+      "https://www.linkedin.com/school/holdonplay"
+    ]
+  };
   return (
+    <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(HoldOnPlayData) }}
+        />
+      </Head>
     <html lang="en">
       <body
         className={`${theme === "dark" ? "text-white bg-black" : "text-black bg-white"} ${poppins.variable} flex  flex-col antialiased relative  `}
@@ -42,6 +76,9 @@ export default function RootLayout({
         <Footer/>
       </ThemeProvider>
       </body>
+     
     </html>
+  </>
+      
   );
 }

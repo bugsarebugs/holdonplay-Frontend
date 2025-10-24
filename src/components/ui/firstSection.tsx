@@ -30,7 +30,7 @@ export default function FirstSection(){
         gsap.to(boxRef.current, {y: 0, duration: 1});
     }, []);
     return (
-        <div ref={boxRef} className="h-auto px-10  p-10 pb-30 flex flex-col justify-center relative align-middle self-center text-justify lg:text-center items-center bg-[url('/hero.jpg')] bg-cover ">
+        <div ref={boxRef} className="lg:h-dvh h-auto px-10  p-10 pb-30 flex flex-col justify-center relative align-middle self-center text-justify lg:text-center items-center bg-[url('/hero.jpg')] bg-cover ">
             <h1 className="text-4xl lg:text-7xl text text-center text-white font-bold "><span className="text-blue-400">Music Distribution</span> Services</h1>
             <p className="lg:px-60 pt-5 lg:text-3xl  text-sm font-bold text-white">Get your Music on Spotify, Apple Music, TikTok, Youtube, Tidal, Tencent and more.</p>
             <p className="lg:px-60 pt-5 lg:text-3xl text-sm  font-bold text-white">Keep 100% ownership of your music and stay in control of your career. Unlimited Releases starting at Tsh: 77,000/=</p>

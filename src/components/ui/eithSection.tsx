@@ -7,7 +7,7 @@ import { useTheme } from "./ThemeProvider";
 export default function EightSection(){
     const [theme] = useTheme();
     return (
-        <div className={`flex flex-col p-10 gap-10 md:flex-col lg:flex-row sm:flex-col justify-center items-center px-10 lg:px-80 sm:px-20 text-center ${theme === "dark" ? "bg-black text-white": "bg-white text-black"}`}>
+        <div className={`flex flex-col p-10 gap-2 md:flex-col lg:flex-row sm:flex-col justify-center items-center px-10 lg:px-50 sm:px-20 text-center ${theme === "dark" ? "bg-black text-white": "bg-white text-black"}`}>
             <Image src="/forhome/kingofstatenisland.webp" width={500} height={500} alt="Earnings with Music Publishing" className="mr-4"/>
             <div className=" flex flex-col align-middle self-center ">
                 <h1 className="text-3xl font-bold sm:text-2xl">Maximize Your Earnings with <span className="text-blue-400">Music Publishing</span></h1>
